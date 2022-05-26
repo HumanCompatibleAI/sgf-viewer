@@ -1,20 +1,49 @@
-<!-- Adapted from https://github.com/yewang/besogo/blob/gh-pages/stable.html -->
+<!--
+Adapted from https://github.com/yewang/besogo/blob/gh-pages/stable.html
+and https://github.com/yewang/besogo/blob/112894275939b319abf4791b204528109c3a8db7/testing.html
+-->
+
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BesoGo</title>
 
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="css/besogo.css">
-<link rel="stylesheet" type="text/css" href="css/board-flat.css">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BesoGo</title>
 
-<!-- JS -->
-<script src="https://github.com/yewang/besogo/releases/download/v0.0.2-alpha/besogo.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/besogo.css">
+    <link rel="stylesheet" type="text/css" href="css/board-flat.css">
 
-<body style="padding: 0px; margin: 0px; overflow-x: hidden; overflow-y: scroll" onload="besogo.autoInit()">
-    <div class="besogo-editor" orient="view" landratio="none">
-    </div>
+    <!-- JS -->
+    <script src="https://github.com/yewang/besogo/releases/download/v0.0.2-alpha/besogo.min.js"></script>
+</head>
+
+<body>
+    <div id="viewer"></div>
+
+    <details>
+        <summary>Raw SGF string</summary>
+        <code id="sgf_str"></code>
+    </details>
+
+    <script type="text/javascript">
+        (function () {
+            const div_viewer = document.getElementById("viewer");
+            const div_sgf_str = document.getElementById("sgf_str");
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const sgf_str = urlParams.get("sgf");
+            if (sgf_str != null) {
+                div_viewer.innerText = sgf_str;
+                div_sgf_str.innerText = sgf_str;
+            }
+
+            // See https://github.com/yewang/besogo/blob/112894275939b319abf4791b204528109c3a8db7/js/besogo.js
+            // for how besogo.create works.
+            besogo.create(div_viewer, {});
+        })();
+    </script>
 </body>
 
 </html>
