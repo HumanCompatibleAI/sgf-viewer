@@ -32,7 +32,8 @@ and https://github.com/yewang/besogo/blob/112894275939b319abf4791b204528109c3a8d
             const div_viewer = document.getElementById("viewer");
             const div_sgf_str = document.getElementById("sgf_str");
 
-            const urlParams = new URLSearchParams(window.location.search);
+            // window.location.hash = "#any_hash_key=any_value"
+            const urlParams = new URLSearchParams(window.location.hash.substring(1));
             const sgf_str = urlParams.get("sgf");
             if (sgf_str != null) {
                 div_viewer.innerText = sgf_str;
