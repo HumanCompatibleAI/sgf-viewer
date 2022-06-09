@@ -48,6 +48,10 @@ and https://github.com/yewang/besogo/blob/112894275939b319abf4791b204528109c3a8d
             // See https://github.com/yewang/besogo/blob/112894275939b319abf4791b204528109c3a8db7/js/besogo.js
             // for how besogo.create works.
             besogo.create(div_viewer, {});
+
+            // Show game info on load.
+            const gameinfo_container = document.getElementsByClassName("besogo-gameInfo");
+            gameinfo_container[0].style["display"] = "table";
         })();
     </script>
 </body>
